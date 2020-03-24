@@ -9,7 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.parabolt.lhet.api.entity.Admin;
+import com.parabolt.lhet.api.entity.VisitLog;
+import com.parabolt.lhet.api.entity.Volunteer;
 import com.parabolt.lhet.api.repository.AdminRepository;
+import com.parabolt.lhet.api.repository.VisitLogRepository;
+import com.parabolt.lhet.api.repository.VolunteerRepository;
 
 
 
@@ -17,10 +21,21 @@ import com.parabolt.lhet.api.repository.AdminRepository;
 public class VolunteerService {
 	
 	@Autowired
-	AdminRepository adminRepository;
+	VolunteerRepository volunteerRepository;
 
-	public Admin createVolunteer(Admin admin) {
+	public Volunteer createVolunteer(Volunteer volunteer) {
 		
-		return adminRepository.save(admin);
+		return volunteerRepository.save(volunteer);
+	}
+	
+	
+	public List<Volunteer> getAllVolunteers() {
+		
+		return volunteerRepository.findAll();
+	}
+	
+	public Optional<Volunteer> getVolunteerById(int id) {
+		
+		return volunteerRepository.findById(id);
 	}
 }

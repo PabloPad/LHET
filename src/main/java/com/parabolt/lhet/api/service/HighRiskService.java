@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.parabolt.lhet.api.entity.Admin;
+import com.parabolt.lhet.api.entity.HighRisk;
 import com.parabolt.lhet.api.repository.AdminRepository;
+import com.parabolt.lhet.api.repository.HighRiskRepository;
 
 
 
@@ -17,10 +19,21 @@ import com.parabolt.lhet.api.repository.AdminRepository;
 public class HighRiskService {
 	
 	@Autowired
-	AdminRepository adminRepository;
+	HighRiskRepository highRiskRepository;
 
-	public Admin createAdmin(Admin admin) {
+	public HighRisk createHighRisk(HighRisk highRisk) {
 		
-		return adminRepository.save(admin);
+		return highRiskRepository.save(highRisk);
+	}
+	
+	
+	public List<HighRisk> getAllHighRisks() {
+		
+		return highRiskRepository.findAll();
+	}
+	
+	public Optional<HighRisk> getHighRiskById(int id) {
+		
+		return highRiskRepository.findById(id);
 	}
 }

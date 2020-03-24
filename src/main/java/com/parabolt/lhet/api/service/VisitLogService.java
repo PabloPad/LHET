@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.parabolt.lhet.api.entity.Admin;
+import com.parabolt.lhet.api.entity.VisitLog;
 import com.parabolt.lhet.api.repository.AdminRepository;
+import com.parabolt.lhet.api.repository.VisitLogRepository;
 
 
 
@@ -17,10 +19,21 @@ import com.parabolt.lhet.api.repository.AdminRepository;
 public class VisitLogService {
 	
 	@Autowired
-	AdminRepository adminRepository;
+	VisitLogRepository visitLogRepository;
 
-	public Admin createAdmin(Admin admin) {
+	public VisitLog createVisitLog(VisitLog visitLog) {
 		
-		return adminRepository.save(admin);
+		return visitLogRepository.save(visitLog);
+	}
+	
+	
+	public List<VisitLog> getAllLogs() {
+		
+		return visitLogRepository.findAll();
+	}
+	
+	public Optional<VisitLog> getLogById(int id) {
+		
+		return visitLogRepository.findById(id);
 	}
 }

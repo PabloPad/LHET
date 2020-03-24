@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.parabolt.lhet.api.entity.Admin;
+import com.parabolt.lhet.api.entity.GeneralInfo;
 import com.parabolt.lhet.api.repository.AdminRepository;
+import com.parabolt.lhet.api.repository.GeneralInfoRepository;
 
 
 
@@ -17,10 +19,21 @@ import com.parabolt.lhet.api.repository.AdminRepository;
 public class GeneralInfoService {
 	
 	@Autowired
-	AdminRepository adminRepository;
+	GeneralInfoRepository generalInfoRepository;
 
-	public Admin createAdmin(Admin admin) {
+	public GeneralInfo createInfo(GeneralInfo info) {
 		
-		return adminRepository.save(admin);
+		return generalInfoRepository.save(info);
+	}
+	
+	
+	public List<GeneralInfo> getAllInfo() {
+		
+		return generalInfoRepository.findAll();
+	}
+	
+	public Optional<GeneralInfo> getInfoById(int id) {
+		
+		return generalInfoRepository.findById(id);
 	}
 }

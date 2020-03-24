@@ -29,6 +29,13 @@ public class AdminService {
 		
 		return adminRepository.findAll();
 	}
+	
+	public Optional<Admin> getAdminById(int id) {
+		
+		return adminRepository.findById(id);
+	}
+	
+	
 }
 
 

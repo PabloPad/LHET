@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.parabolt.lhet.api.request.GeneralInfoRequest;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,6 +23,12 @@ import lombok.Setter;
 @NoArgsConstructor
 public class GeneralInfo {
 
+	public GeneralInfo(GeneralInfoRequest request) {
+		this.info_note=request.getInfo_notes();
+		this.a_id=request.getA_id();
+		this.comments="";
+		this.created_at= new Date();
+	}
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int Id;
@@ -35,9 +43,13 @@ public class GeneralInfo {
 	@Column
 	private Date created_at;
 	
+	@Column
+	private int a_id;
+	
+	/*
 	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	private Admin admin;
-	
+	*/
 	
 	
 }

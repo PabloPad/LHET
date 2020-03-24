@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.parabolt.lhet.api.request.VisitLogRequest;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,6 +23,12 @@ import lombok.Setter;
 @NoArgsConstructor
 public class VisitLog {
 
+	public VisitLog(VisitLogRequest request) {
+		
+		this.visit_notes = request.getVisit_notes();
+		this.h_id=request.getH_id();
+	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int Id;
@@ -32,9 +40,13 @@ public class VisitLog {
 	@Column
 	private Date created_at;
 	
+	@Column
+	private int h_id;
+	
+	/* Alternativa con Hibernate mapping
 	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	private HighRisk high_risk;
-	
+	*/
 	
 	
 }
