@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.parabolt.academyHackaton.back1.entity.Quest;
+
 import com.parabolt.lhet.api.entity.Admin;
 import com.parabolt.lhet.api.service.AdminService;
 

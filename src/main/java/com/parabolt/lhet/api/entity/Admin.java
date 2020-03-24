@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.parabolt.lhet.api.request.AdminRequest;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,6 +19,14 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class Admin {
+	
+	public Admin(AdminRequest request) {
+		this.full_name=request.getFull_name();
+		this.country_code=request.getCountry_code();
+		this.profession=request.getProfession();
+		this.adress=request.getAddress();
+		this.created_at = new Date();
+	}
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

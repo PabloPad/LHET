@@ -2,11 +2,15 @@ package com.parabolt.lhet.api.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,19 +27,19 @@ public class Volunteer {
 	private int Id;
 	
 	@Column
-	private String full_name;
+	private String volunteer_name;
 	
 	@Column
 	private int country_code;
-	
-	@Column
-	private String profession;
 	
 	@Column
 	private Date created_at;
 	
 	@Column
 	private String adress;
+	
+	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	private Admin admin;
 	
 	
 	
