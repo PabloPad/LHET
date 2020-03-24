@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.parabolt.lhet.api.entity.Admin;
+import com.parabolt.lhet.api.request.AdminRequest;
 import com.parabolt.lhet.api.service.AdminService;
 
 @Controller
@@ -27,9 +28,9 @@ public class AdminController {
 	AdminService adminService;
 	
 	@PostMapping("/admins")
-	public ResponseEntity<?> createAdmin(@RequestBody Admin newAdmin){
+	public ResponseEntity<?> createAdmin(@RequestBody AdminRequest newAdmin){
 		
-		Admin admin = adminService.createAdmin(newAdmin);
+		Admin admin = adminService.createAdmin(new Admin(newAdmin));
 		return new ResponseEntity<Admin>(admin,HttpStatus.OK);
 	}
 	
